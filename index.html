@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Barbie Dress-Up!</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Stars background -->
+  <div class="stars" id="stars"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="title-wrap">
+      <span class="star-icon">⭐</span>
+      <h1>Barbie's<br>Dress-Up!</h1>
+      <span class="star-icon">⭐</span>
+    </div>
+    <p class="subtitle">Pick an outfit for Barbie! 💖</p>
+  </header>
+
+  <main>
+    <!-- Barbie display area -->
+    <section class="doll-stage">
+      <div class="glow-ring"></div>
+      <div class="doll-wrap" id="dollWrap">
+        <!-- Body -->
+        <div class="doll" id="doll">
+          <!-- Hair -->
+          <div class="hair" id="dollHair">
+            <div class="hair-top"></div>
+            <div class="hair-left"></div>
+            <div class="hair-right"></div>
+          </div>
+          <!-- Head -->
+          <div class="head">
+            <div class="face">
+              <div class="eyes">
+                <div class="eye left-eye"><div class="pupil"></div><div class="shine"></div></div>
+                <div class="eye right-eye"><div class="pupil"></div><div class="shine"></div></div>
+              </div>
+              <div class="nose"></div>
+              <div class="mouth"></div>
+              <div class="cheeks">
+                <div class="cheek left-cheek"></div>
+                <div class="cheek right-cheek"></div>
+              </div>
+            </div>
+          </div>
+          <!-- Neck -->
+          <div class="neck"></div>
+          <!-- Body / Outfit -->
+          <div class="torso" id="dollTorso">
+            <div class="outfit-layer" id="outfitLayer"></div>
+            <div class="arms">
+              <div class="arm left-arm" id="leftArm"></div>
+              <div class="arm right-arm" id="rightArm"></div>
+            </div>
+          </div>
+          <!-- Legs / Skirt -->
+          <div class="lower-body" id="lowerBody">
+            <div class="skirt-layer" id="skirtLayer"></div>
+            <div class="legs">
+              <div class="leg left-leg" id="leftLeg"></div>
+              <div class="leg right-leg" id="rightLeg"></div>
+            </div>
+          </div>
+          <!-- Accessory layer -->
+          <div class="accessory-layer" id="accessoryLayer"></div>
+        </div>
+      </div>
+
+      <!-- Sparkles container -->
+      <div class="sparkles" id="sparkles"></div>
+
+      <!-- Name tag -->
+      <div class="name-tag" id="nameTag">Barbie ✨</div>
+    </section>
+
+    <!-- Wardrobe -->
+    <section class="wardrobe">
+
+      <!-- Outfit Tab -->
+      <div class="wardrobe-section" id="sectionOutfit">
+        <h2 class="section-title">👗 Outfits</h2>
+        <div class="items-grid" id="outfitGrid"></div>
+      </div>
+
+      <!-- Hair Tab -->
+      <div class="wardrobe-section" id="sectionHair">
+        <h2 class="section-title">💇 Hair</h2>
+        <div class="items-grid" id="hairGrid"></div>
+      </div>
+
+      <!-- Accessories Tab -->
+      <div class="wardrobe-section" id="sectionAcc">
+        <h2 class="section-title">💎 Accessories</h2>
+        <div class="items-grid" id="accGrid"></div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- Celebration overlay -->
+  <div class="celebration" id="celebration">
+    <div class="celebration-text">You're a Style Star! 🌟</div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

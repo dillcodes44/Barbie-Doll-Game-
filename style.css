@@ -1,0 +1,494 @@
+/* ===== CSS Variables ===== */
+:root {
+  --pink: #ff4daf;
+  --hot-pink: #ff0080;
+  --light-pink: #ffb3d9;
+  --baby-pink: #ffe6f4;
+  --purple: #c44dff;
+  --gold: #ffd700;
+  --white: #fff;
+  --skin: #f5c5a3;
+  --skin-dark: #e8a87c;
+  --hair-color: #f5c518;
+  --outfit-color: #ff4daf;
+  --skirt-color: #ff4daf;
+  --acc-color: transparent;
+}
+
+/* ===== Reset & Base ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ff69b4 0%, #da70d6 40%, #9b59b6 100%);
+  font-family: 'Nunito', sans-serif;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ===== Stars ===== */
+.stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.7);
+  animation: twinkle var(--dur, 3s) infinite ease-in-out var(--delay, 0s);
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* ===== Header ===== */
+header {
+  text-align: center;
+  padding: 24px 20px 8px;
+  position: relative;
+  z-index: 1;
+}
+.title-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+h1 {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(2.2rem, 8vw, 4rem);
+  color: #fff;
+  text-shadow: 4px 4px 0 var(--hot-pink), 8px 8px 0 rgba(0,0,0,0.15);
+  line-height: 1.1;
+  letter-spacing: 1px;
+}
+.star-icon {
+  font-size: 2.5rem;
+  animation: spin 4s linear infinite;
+  display: inline-block;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.subtitle {
+  font-size: 1.2rem;
+  color: var(--baby-pink);
+  font-weight: 700;
+  margin-top: 6px;
+  letter-spacing: 0.5px;
+}
+
+/* ===== Main Layout ===== */
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== Doll Stage ===== */
+.doll-stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.glow-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 240px;
+  height: 340px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(255,255,255,0.25) 0%, transparent 70%);
+  animation: pulse-glow 2s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes pulse-glow {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.7; }
+  50% { transform: translate(-50%, -50%) scale(1.08); opacity: 1; }
+}
+
+.doll-wrap {
+  position: relative;
+  width: 180px;
+  height: 360px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.doll-wrap:hover { transform: scale(1.04); }
+
+.doll {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ===== Hair ===== */
+.hair {
+  position: absolute;
+  top: 18px;
+  width: 90px;
+  z-index: 10;
+  pointer-events: none;
+  transition: all 0.4s;
+}
+.hair-top {
+  width: 80px;
+  height: 36px;
+  background: var(--hair-color);
+  border-radius: 40px 40px 0 0;
+  margin: 0 auto;
+  box-shadow: 0 -4px 8px rgba(0,0,0,0.12);
+  transition: background 0.4s;
+}
+.hair-left {
+  position: absolute;
+  left: 0;
+  top: 20px;
+  width: 18px;
+  height: 60px;
+  background: var(--hair-color);
+  border-radius: 8px 0 10px 10px;
+  transition: background 0.4s, height 0.4s;
+}
+.hair-right {
+  position: absolute;
+  right: 0;
+  top: 20px;
+  width: 18px;
+  height: 60px;
+  background: var(--hair-color);
+  border-radius: 0 8px 10px 10px;
+  transition: background 0.4s, height 0.4s;
+}
+
+/* ===== Head ===== */
+.head {
+  width: 80px;
+  height: 90px;
+  background: var(--skin);
+  border-radius: 40px 40px 35px 35px;
+  margin-top: 30px;
+  position: relative;
+  z-index: 5;
+  box-shadow: inset -6px 6px 16px rgba(0,0,0,0.08);
+  transition: background 0.3s;
+}
+.face { position: absolute; inset: 0; }
+
+/* Eyes */
+.eyes {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 28px;
+}
+.eye {
+  width: 18px;
+  height: 18px;
+  background: #3a6fbf;
+  border-radius: 50%;
+  position: relative;
+  border: 2.5px solid #1a3d7c;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  animation: blink 5s infinite;
+}
+.pupil {
+  width: 9px;
+  height: 9px;
+  background: #111;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.shine {
+  width: 5px;
+  height: 5px;
+  background: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+}
+@keyframes blink {
+  0%, 94%, 100% { transform: scaleY(1); }
+  96%, 98% { transform: scaleY(0.1); }
+}
+
+/* Nose */
+.nose {
+  width: 8px;
+  height: 5px;
+  background: var(--skin-dark);
+  border-radius: 50%;
+  margin: 8px auto 0;
+  opacity: 0.5;
+}
+
+/* Mouth */
+.mouth {
+  width: 24px;
+  height: 12px;
+  border: 3px solid var(--hot-pink);
+  border-top: none;
+  border-radius: 0 0 14px 14px;
+  margin: 6px auto 0;
+}
+
+/* Cheeks */
+.cheeks { position: absolute; top: 52px; width: 100%; display: flex; justify-content: space-between; padding: 0 4px; }
+.cheek {
+  width: 14px;
+  height: 8px;
+  background: rgba(255, 100, 150, 0.35);
+  border-radius: 50%;
+}
+
+/* ===== Neck ===== */
+.neck {
+  width: 22px;
+  height: 14px;
+  background: var(--skin);
+  position: relative;
+  z-index: 4;
+}
+
+/* ===== Torso ===== */
+.torso {
+  width: 90px;
+  height: 100px;
+  background: var(--outfit-color);
+  border-radius: 10px 10px 14px 14px;
+  position: relative;
+  z-index: 3;
+  overflow: visible;
+  transition: background 0.4s;
+  box-shadow: inset 0 -6px 14px rgba(0,0,0,0.12);
+}
+.outfit-layer {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  transition: all 0.4s;
+}
+
+/* Arms */
+.arms { position: absolute; top: 6px; width: 130px; left: 50%; transform: translateX(-50%); display: flex; justify-content: space-between; pointer-events: none; }
+.arm {
+  width: 22px;
+  height: 80px;
+  background: var(--skin);
+  border-radius: 12px;
+  transition: background 0.3s;
+}
+.left-arm { background: var(--outfit-color); border-radius: 14px 6px 14px 14px; transition: background 0.4s; }
+.right-arm { background: var(--outfit-color); border-radius: 6px 14px 14px 14px; transition: background 0.4s; }
+
+/* ===== Lower Body ===== */
+.lower-body {
+  width: 100px;
+  min-height: 120px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+}
+.skirt-layer {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 100px;
+  background: var(--skirt-color);
+  border-radius: 8px 8px 60% 60%;
+  transition: background 0.4s, width 0.4s, height 0.4s;
+  z-index: 1;
+  clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+}
+.legs {
+  display: flex;
+  gap: 8px;
+  margin-top: 96px;
+  position: relative;
+  z-index: 0;
+}
+.leg {
+  width: 22px;
+  height: 70px;
+  background: var(--skin);
+  border-radius: 8px 8px 14px 14px;
+  transition: background 0.3s;
+}
+
+/* ===== Accessory Layer ===== */
+.accessory-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 20;
+}
+
+/* ===== Sparkles ===== */
+.sparkles { position: absolute; inset: 0; pointer-events: none; overflow: hidden; border-radius: 50%; }
+.sparkle {
+  position: absolute;
+  font-size: 1.4rem;
+  animation: sparkle-fly 1s ease-out forwards;
+  pointer-events: none;
+}
+@keyframes sparkle-fly {
+  0% { opacity: 1; transform: translate(0, 0) scale(1); }
+  100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0.3); }
+}
+
+/* ===== Name Tag ===== */
+.name-tag {
+  margin-top: 16px;
+  background: rgba(255,255,255,0.9);
+  color: var(--hot-pink);
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.3rem;
+  padding: 8px 24px;
+  border-radius: 30px;
+  box-shadow: 0 4px 14px rgba(255,0,128,0.25);
+  letter-spacing: 1px;
+}
+
+/* ===== Wardrobe ===== */
+.wardrobe {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 500px;
+  flex: 1;
+}
+
+.wardrobe-section {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 24px;
+  padding: 16px 20px 20px;
+  border: 2px solid rgba(255,255,255,0.4);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+}
+
+.section-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.4rem;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+}
+
+.items-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* ===== Item Cards ===== */
+.item-card {
+  background: rgba(255,255,255,0.92);
+  border-radius: 18px;
+  padding: 10px 14px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  border: 3px solid transparent;
+  transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s, background 0.15s;
+  min-width: 80px;
+  user-select: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.item-card:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 8px 24px rgba(255,0,128,0.3);
+}
+.item-card.selected {
+  border-color: var(--hot-pink);
+  background: #ffe6f4;
+  box-shadow: 0 0 0 4px rgba(255,0,128,0.2);
+  transform: translateY(-2px);
+}
+.item-icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+.item-label {
+  font-size: 0.7rem;
+  font-weight: 900;
+  color: #c44daa;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* ===== Celebration ===== */
+.celebration {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.celebration.show { opacity: 1; }
+.celebration-text {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(2rem, 8vw, 3.5rem);
+  color: #fff;
+  text-shadow: 4px 4px 0 var(--hot-pink), 0 0 40px rgba(255,255,255,0.8);
+  background: linear-gradient(135deg, var(--purple), var(--hot-pink));
+  padding: 24px 48px;
+  border-radius: 30px;
+  border: 4px solid #fff;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  animation: pop 0.4s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+}
+@keyframes pop {
+  0% { transform: scale(0.3) rotate(-10deg); }
+  60% { transform: scale(1.15) rotate(3deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+/* ===== Confetti ===== */
+.confetti-piece {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  z-index: 99;
+  animation: confetti-fall var(--dur, 2s) ease-in var(--delay, 0s) forwards;
+  pointer-events: none;
+}
+@keyframes confetti-fall {
+  0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+  main { flex-direction: column; align-items: center; }
+  .wardrobe { width: 100%; }
+}
